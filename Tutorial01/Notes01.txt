@@ -16,8 +16,7 @@ WHAT IS MVT?
 	4.Template --> HTML Files
 
 FLOW CHART OF MVT
-
-User --> Django --> URL --> View --> Model & Template
+	User --> Django --> URL --> View --> Model & Template
 
 INSTALLING PYTHON AND DJANGO
 	1.To check python on cmd --> python
@@ -43,7 +42,7 @@ PYTHON DJANGO STRUCTURE
 	8.Views.py --> All the function of the URLS
 
 MIGRATE DEFAULT MIGRATIONS
-	1.To create the schema of database --> python manage.py make migration
+	1.To create the schema of database --> python manage.py makemigrations
 	2.To create table --> python manage.py migrate
 
 TO READ SQLITE FILE
