@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: white;
+            background: #000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello welcome to {{page_detail}}</h1><br><br>
+
+    <h2>Some cities of India</h2><br>
+
+    {% for city in city_names %}
+    {% if city|length > 5 %}
+    <div class="city-name">{{city}}</div>
+    {% else %}
+    City is not available
+    {% endif %}
+    {% endfor %}
+
+
+    <h2>Name and phone number table</h2>
+
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Phone</th>
+        </thead>
+        {% for person in person_info %}
+        <tbody>
+            <td>{{person.name}}</td>
+            <td>{{person.phone}}</td>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
