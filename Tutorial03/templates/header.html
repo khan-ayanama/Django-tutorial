@@ -2,72 +2,68 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+        }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+        .nav-bar {
+            display: flex;
+            background-color: black;
+            color: white;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+        }
 
-    <title>Mexant - Financial HTML5 Template</title>
+        ul {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            list-style-type: none;
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        .list-item li a {
+            text-decoration: none;
+            color: white;
+        }
 
+        main h1 {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgb(2, 2, 49);
+            color: white;
+            margin-top: 1rem;
+        }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="static/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="static/assets/css/templatemo-574-mexant.css">
-    <link rel="stylesheet" href="static/assets/css/owl.css">
-    <link rel="stylesheet" href="static/assets/css/animate.css">
-    <link rel="stylesheet" href="static/https://unpkg.com/swiper@7/swiper-bundle.min.css">
-    <!--
+        main p {
+            text-align: center;
+            margin-top: 1rem;
+            align-items: center;
+        }
 
-TemplateMo 574 Mexant
-
-https://templatemo.com/tm-574-mexant
-
--->
+        .nav-bar ul a.active {
+            background-color: red;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-
-
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="static/assets/images/logo.png" alt="">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#services">Services</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="has-sub">
-                                <a href="javascript:void(0)">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="our-services.html">Our Services</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-                            <li><a href="contact-us.html">Contact Support</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+    <nav class="nav-bar">
+        <h1>Logo</h1>
+        <ul class="list-item">
+            <li><a class="{% if request.path == '/' %} active {% endif %}" href="/">Home</a></li>
+            <li><a href="/about-us">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            {% url 'services' as con %}
+            <li><a class="{% if request.path == con %} active {% endif %}" href="{% url 'services' %}">Our Services</a>
+            </li>
+        </ul>
+    </nav>
