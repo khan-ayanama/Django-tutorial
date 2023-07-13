@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 900px;
+            margin: 0 auto;
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-content {
+            width: 250px;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgb(2, 2, 54);
+            color: white;
+        }
+
+        .card-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        marquee {
+            background-color: rgb(44, 5, 5);
+            color: white;
+            padding: 3rem;
+        }
+
+        marquee a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee onmouseover="stop()" onmouseout="start()">
+        {% for head in news_data %}
+
+        <a href="/news-detail/{{head.id}}"> {{head.news_title}} </a> &nbsp;&nbsp;| &nbsp;&nbsp;
+
+        {% endfor %}
+
+    </marquee>
+
+
+    <h1>Django Models</h1>
+
+    <h2 style="margin-bottom: 1.5rem;">Services</h2>
+
+    <form style="text-align: center;" method="get">
+        <input type="text" name="servicename">
+        <input type="submit" value="Search">
+    </form>
+
+    <div class="container">
+        {% for model_data in service_data %}
+
+        <div class="card-content">
+            <div class="card-header">
+                <div class="card-icon">{{model_data.service_icon}}</div>
+                <div class="card-title">{{model_data.service_title}}</div>
+            </div>
+            <!-- <div class="card-description">{{model_data.service_description | upper}}</div> -->
+
+            <div class="card-description">{{model_data.service_description | safe}}</div>
+        </div>
+        {% empty %}
+        No data found
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
