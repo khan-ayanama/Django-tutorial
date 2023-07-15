@@ -20,8 +20,8 @@ def home(request):
     }
     return render(request,'index.html',data)
 
-def news_details(request,id):
-    news_data = News.objects.get(id = id)
+def news_details(request,slug):
+    news_data = News.objects.get(news_slug = slug)
     data = {
         'news_data':news_data
     }

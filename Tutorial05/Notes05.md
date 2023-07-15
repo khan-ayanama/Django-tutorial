@@ -318,3 +318,53 @@ This is used for string formatting
                 No data found
                 {% endfor %}
     ```
+
+## Django Auto-Slug
+
+1. First of all we need to install auto-slug
+
+    ```python
+        pip install django-autoslug
+    ```
+
+2. In models.py of news section import Autoslug and add the function in the class of model
+
+    ```python
+        from django.db import models
+        from tinymce.models import HTMLField
+
+        from autoslug import AutoSlugField
+
+        # Create your models here.
+
+        class News(models.Model):
+            news_title = models.CharField(max_length=100)
+            news_description = HTMLField()
+
+            news_slug = AutoSlugField(populate_from='news_title',unique=True,null=True,default=None)
+    ```
+
+3. Now migrate all the new field created in model using makemigrations command
+
+4. Change the link tag and call the news_slug field from the database
+
+    ```html
+        <a href="/news-detail/{{head.news_slug}}"> {{head.news_title}} </a> &nbsp;&nbsp;| &nbsp;&nbsp;
+    ```
+
+5. Change the url to slug
+
+    ```python
+        path('news-detail/<slug>',views.news_details)
+    ```
+
+6. Receive the slug in view of news and change the recieved field in get function
+
+    ```python
+        def news_details(request,slug):
+        news_data = News.objects.get(slug_field = slug)
+        data = {
+            'news_data':news_data
+        }
+        return render(request,'news-detail.html',data)
+    ```

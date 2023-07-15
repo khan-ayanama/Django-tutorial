@@ -21,5 +21,5 @@ from Tutorial05 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
-    path('news-detail/<id>',views.news_details)
+    path('news-detail/<slug>',views.news_details)
 ]
